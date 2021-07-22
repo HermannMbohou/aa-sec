@@ -38,6 +38,11 @@
                                 <input class="form-control" type="text" required="" placeholder="Name">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="phone" required="" placeholder="Phone">
+                            </div>
+                        </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" required="" placeholder="Email">
@@ -46,6 +51,11 @@
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="password" required="" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="password" required="" placeholder="Confirm password">
                             </div>
                         </div>
 
