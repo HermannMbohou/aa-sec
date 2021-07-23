@@ -31,37 +31,37 @@
         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="http://eliteadmin.themedesigner.in/demos/bt4/colors/index.html">
+                    <form class="form-horizontal form-material" id="loginform" method="POST" action="services/auth/auth.php">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Name">
+                                <input name="name" class="form-control" type="text" required="" placeholder="Name">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="phone" required="" placeholder="Phone">
+                                <input name="number" class="form-control" type="phone" required="phone" placeholder="Phone">
                             </div>
                         </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Email">
+                                <input name="email" class="form-control" type="text" required="mail" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input name="password" class="form-control" type="password" required="" placeholder="Password">
                             </div>
                         </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Confirm password">
+                                <input name="confirmpassword" class="form-control" type="password" required="" placeholder="Confirm password">
                             </div>
                         </div>
 
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
+                                <button id="signupbtn" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
@@ -93,6 +93,12 @@
         $('#to-recover').on("click", function() {
             $("#loginform").slideUp();
             $("#recoverform").fadeIn();
+        });
+        //===============================================================
+        // fonction d enregistrement
+        //===============================================================
+        $('#signupbtn').on('click', function(){
+            
         });
     </script>
     

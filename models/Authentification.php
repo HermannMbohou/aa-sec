@@ -48,12 +48,6 @@
         function setpassword($password){
             $this->password = $password;
         }
-
-        function signup(){
-            AuthentificationController::signup($this->username, $this->email, $this->password, $this->number);
-        }
+        
     }
-
-    $authentification = new Authentification("un_mal","fvsv","sgfcdcd","czxvdg");
-    $authentification->signup();
 ?>

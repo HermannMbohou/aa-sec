@@ -35,11 +35,11 @@
                         <h3 class="text-center m-b-20">Sign In</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username or number"> </div>
+                                <input name="number" class="form-control" type="text" required="" placeholder="Number"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password"> </div>
+                                <input name="password" class="form-control" type="password" required="" placeholder="Password"> </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
