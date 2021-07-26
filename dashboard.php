@@ -1,3 +1,10 @@
+<?php
+    if(!empty($_GET))
+    {
+        $user = json_decode($_GET['d']);
+    }
+?>
+
 <?php include 'includes/head.php';?>
 
     <div id="main-wrapper">
@@ -16,7 +23,7 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Dashboard 1</h4>
+                        <h4 class="text-themecolor">Dashboard i</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
@@ -42,7 +49,7 @@
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-screen-desktop"></i></h3>
-                                            <p class="text-muted">MYNEW CLIENTS</p>
+                                            <p class="text-muted">MTN MOBILE MONAIS</p>
                                         </div>
                                         <div class="ml-auto">
                                             <h2 class="counter text-primary">23</h2>
@@ -61,7 +68,7 @@
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-note"></i></h3>
-                                            <p class="text-muted">NEW PROJECTS</p>
+                                            <p class="text-muted">ORANGE MONAIS</p>
                                         </div>
                                         <div class="ml-auto">
                                             <h2 class="counter text-cyan">169</h2>
@@ -73,7 +80,7 @@
                     </div>
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -89,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Column -->
                     <!-- Column -->
                     <div class="card">
@@ -99,10 +106,10 @@
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-bag"></i></h3>
-                                            <p class="text-muted">All PROJECTS</p>
+                                            <p class="text-muted">All TRANSACTIONS</p>
                                         </div>
                                         <div class="ml-auto">
-                                            <h2 class="counter text-success">431</h2>
+                                            <h2 class="counter text-success">192</h2>
                                         </div>
                                     </div>
                                 </div>

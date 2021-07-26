@@ -31,11 +31,11 @@
             <div class="login-box card">
                 <div class="card-body">
 
-                    <form class="form-horizontal form-material" id="loginform" action="dashboard.php">
+                    <form class="form-horizontal form-material" method="POST" action="services/auth/auth.php">
                         <h3 class="text-center m-b-20">Sign In</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input name="number" class="form-control" type="text" required="" placeholder="Number"> </div>
+                                <input name="number" class="form-control" type="phone" required="" placeholder="Number"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">

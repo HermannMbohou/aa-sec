@@ -1,3 +1,7 @@
+<?php
+    $data = json_decode($_GET['d']);
+?>
+
 <?php include 'includes/head.php';?>
 
     <div id="main-wrapper">
@@ -47,82 +51,28 @@
                                         cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                                <th>Action</th>
+                                                <th>Type</th>
+                                                <th>Subtype</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                                <td>
-                                                    <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
-                                                    <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                                </td>
-                                            </tr>
-
+                                            <?php foreach ( $data as $t ){ ?>
+                                            <?php if($t->created_at>=date('Y-m-d h:m:s')){ ?>
+                                                <tr>
+                                                    <td><?=$t->type?></td>
+                                                    <td><?=$t->subtype?></td>
+                                                    <td><?=$t->amount?></td>
+                                                    <td><?=$t->created_at?></td>
+                                                    <td>
+                                                        <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModal2" data-whatever="@fat"><i class="ti ti-pencil"></i></button>
+                                                        <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

@@ -1,18 +1,18 @@
 <?php
 
-    abstract class Db
+    class Db
     {
-        private static $db;
+        private $db;
 
         function __construct(){ 
-            self::$db = new PDO('mysql:host=localhost;dbname=secret','root','');
-            self::$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
-            self::$db->exec('SET NAMES utf8');
+            $this->db = new PDO('mysql:host=localhost;dbname=secret','root','');
+            $this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
+            $this->db->exec('SET NAMES utf8');
         }
 
-        public static function getPdo()
+        public function getPdo()
         {
-            return self::$db;
+            return $this->db;
         }
     }
 ?>

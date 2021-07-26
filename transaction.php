@@ -38,7 +38,7 @@
                             <div class="card-body bg-light">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h3>March 2017</h3>
+                                        <h3><?= date("M, Y") ?></h3>
                                         <h5 class="font-light m-t-0">Report for this month</h5>
                                     </div>
                                 </div>
@@ -55,47 +55,9 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-center">1</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
+                                            <td class="txt-oflo"><?=date("d")?></td>
                                             <td>
-                                            <a class="btn btn-xs btn-dark" href="enregistrement.php"><i class="ti ti-eye"></i></a>
-                                                <button class="btn btn-xs btn-info"><i class="ti ti-pencil"></i></button>
-                                                <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td>
-                                                <a class="btn btn-xs btn-dark" href="enregistrement.php"><i class="ti ti-eye"></i></a>
-                                                <button class="btn btn-xs btn-info"><i class="ti ti-pencil"></i></button>
-                                                <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-dark"><i class="ti ti-eye"></i></button>
-                                                <button class="btn btn-xs btn-info"><i class="ti ti-pencil"></i></button>
-                                                <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-dark"><i class="ti ti-eye"></i></button>
-                                                <button class="btn btn-xs btn-info"><i class="ti ti-pencil"></i></button>
-                                                <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-dark"><i class="ti ti-eye"></i></button>
-                                                <button class="btn btn-xs btn-info"><i class="ti ti-pencil"></i></button>
-                                                <button class="btn btn-xs btn-danger"><i class="ti ti-trash"></i></button>
+                                            <a class="btn btn-xs btn-dark" href="services/operation.php?d=list"><i class="ti ti-eye"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -119,20 +81,30 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="POST" action="services/operation.php?d=<?=$_GET['d']?>">
                             <div class="form-group">
-                                <label for="recipient-name" class="control-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name1">
+                                <label for="recipient-name" class="control-label">Transaction:</label>
+                                <select name="type">  
+                                    <option value="OM">OM</option>
+                                    <option value="MOMO">MOMO</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="control-label">Message:</label>
-                                <textarea class="form-control" id="message-text1"></textarea>
+                                <label for="recipient-name" class="control-label">Transaction:</label>
+                                <select name="subtype">  
+                                    <option value="DEPOT">DEPOT</option>
+                                    <option value="RETRAIT">RETRAIT</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Amount:</label>
+                                <input name="amount" type="number" class="form-control" id="message-text1"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save transaction</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
-                                <a href="pages-login.html" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a>
+                                <a href="services\auth\auth.php?p=logout" class="dropdown-item"><i class="fas fa-power-off"></i> Logout</a>
                                 <!-- text-->
                             </div>
                         </div>
@@ -24,8 +24,8 @@
 
                         <li class="nav-small-cap">--- MENU</li>
 
-                        <li> <a href="dashboard.php" aria-expanded="false" ><i class="ti-home"></i><span class="hide-menu">Dashboard</span></a> </li>
-                        <li> <a href="transaction.php" aria-expanded="false" ><i class=" ti-stats-up "></i><span class="hide-menu">Transaction</span></a> </li>
+                        <li> <a href="dashboard.php?d=<?=$user->id?>" aria-expanded="false" ><i class="ti-home"></i><span class="hide-menu">Dashboard</span></a> </li>
+                        <li> <a href="transaction.php?d=<?=$user->id?>" aria-expanded="false" ><i class=" ti-stats-up "></i><span class="hide-menu">Transaction</span></a> </li>
 
                     </ul>
                 </nav>
