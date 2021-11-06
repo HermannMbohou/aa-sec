@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>OMoMo</title>
+    <meta name="description" content="Secretariat">
+    <meta name="author" content="Hermann MBOHOU">
+    <title>AA-ETS</title>
     <link href="assets/dist/css/pages/login-register-lock.css" rel="stylesheet">
     <link href="assets/dist/css/style.min.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">AA-ETS</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -30,30 +30,20 @@
         <div class="login-register" style="background-image:url(assets/images/background/login-register.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-
-                    <form class="form-horizontal form-material" method="POST" action="services/auth/auth.php">
+                    <form class="form-horizontal form-material">
                         <h3 class="text-center m-b-20">Sign In</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input name="number" class="form-control" type="phone" required="" placeholder="Number"> </div>
+                                <input id="number" name="number" class="form-control" type="phone" required placeholder="Number" maxlength="9"> </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input name="password" class="form-control" type="password" required="" placeholder="Password"> </div>
+                                <input id="password" name="password" class="form-control" type="password" required placeholder="Password"> </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="d-flex no-block align-items-center">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
+                        <br>
+                        <div id="sub-div" class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
+                                <button id="sub-login" class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
                             </div>
                         </div>
 
@@ -73,8 +63,35 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/node_modules/popper/popper.min.js"></script>
     <script src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets\scripts\notify.js"></script>
     <!--Custom JavaScript -->
     <script type="text/javascript">
+        //==================================================================
+        //  listener for submit button
+        //==================================================================
+        document.querySelector("#sub-login").addEventListener("click", function(e){
+            e.preventDefault();
+            let number = document.querySelector("#number").value;
+            let password = document.querySelector("#password").value;
+            $.post({
+                url: "services/auth/auth.php",
+                data: {
+                    "number": number,
+                    "password": password
+                },
+                dataType: "json",
+                success: (response, status, xhr)=>{
+                    if( response == "error" ) {
+                        document.querySelector("#password").value = "";
+                        $.notify("Invalide credancials", "error");
+                    } else {
+                        sessionStorage.setItem('user',JSON.stringify(response));
+                        localStorage.setItem('user', JSON.stringify(response));
+                        window.location.href = 'dashboard.html';                        
+                    }
+                },
+            })
+        });
         $(function() {
             $(".preloader").fadeOut();
         });

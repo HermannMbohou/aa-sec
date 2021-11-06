@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="MBOHOU Hermann">
+    <title>AA-ETS</title>
+    <link href="assets/dist/css/pages/login-register-lock.css" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="assets/dist/css/style.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets\scripts\notify.js"></script>
+</head>
+
+<body class="skin-default card-no-border">
+    <div id="small-size" class="container">
+        <p>This web app is optimised for desktop only</p>
+    </div>
+    <div id="custum-dashboard" class="container">
+        <header class="row">
+            <div id='logo-header' class="col-6">
+                <span>AA-SEC</span>
+            </div>
+            <div id='infos-header' class="ml-auto mr-5 my-auto">
+                <div class="">
+                    <div id='photo-profil-header' class="m-auto my-auto"></div>
+                    <div id="dropdown" class="dropdown">
+                        <div @click='dropProfil' id='infos-user-header' class="mt-2 dropdown-toggle"><a href="#">{{ user.name }}</a></div>
+                        <div id='pul'  class="mt-3" v-if='dropprofil'>
+                            <a id="a1" class=" nav nav-link" href="#">Profil</a>
+                            <a id="a3" class=" nav nav-link" @click='logout' href="#">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="container pt-2">
+            <div>
+                <div>
+                    <h3>New register</h3>
+                </div>
+                <div>
+                    <form class="form-group row">
+                        <div class="m-auto col-2">
+                            <input class="form-control" type="text" name="type" id="type" placeholder="type" required>
+                            <input class="form-control" type="number" name="amount" id="amount" placeholder="amount" required>
+                        </div>
+                        <div class="m-auto col-4">
+                            <textarea class="form-control" cols="30" rows="4" name="details" id="details" placeholder="details"></textarea>
+                        </div>
+                        <div class="m-auto col-4">
+                            <textarea class="form-control" cols="30" rows="4" name="other" id="other" placeholder="other"></textarea>
+                        </div>
+                        <div class="m-auto col-2">
+                            <input id="ibtn" class="btn btn-primary col" type="submit" value="Add" @click='insert'>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h3>Registers of the day</h2>
+                </div>
+                <div>
+                    <table class="col table table-hover table-bordered table-cyan">
+                            <thead class="col table-dark">
+                                <td class="col-2">Type</td>
+                                <td class="col-2">Amount</td>
+                                <td class="col-3">Details</td>
+                                <td class="col-3">Other</td>
+                                <td class="col-2">Date</td>
+                            </thead>
+                        <tbody>
+                            <tr v-if='table.length!=0' class="col" v-for='td in table'>
+                                <td class="col-2">{{ td.type }}</td>
+                                <td class="col-2">{{ td.amount }}</td>
+                                <td class="col-3">{{ td.details }}</td>
+                                <td class="col-3">{{ td.other }}</td>
+                                <td class="col-2">{{ td.date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     <div v-if='!table.length!=0' class="col">
+                        <p>
+                            No register found
+                        </p> 
+                     </div>
+                </div>
+            </div>
+        </section>
+        <footer class="container row">
+            <div id="Dev-pick" class="m-auto"></div>
+            <div class="m-auto">
+                <div>MBOHOU Hermann</div>
+                <div>697 588 561 / 678 118 365</div>
+                <p class="margin-b-0">&copy; MBOHOU Hermann <span id="copy-date">2021</span></p>
+            </div>
+            <div id='links' class="m-auto">
+                <div><a href="mailto:hermann.mbohou@gmail.com">E-mail</a></div>
+                <div><a href="https://hermann-mbohou.rf.gd/" target="_blank" rel="noopener noreferrer">Website</a></div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script>
+    class Transaction {
+        type
+        amount
+        details
+        other
+        date
+    }
+
+    var app = new Vue({
+        el: '#custum-dashboard',
+        data: {
+            sessiosuser: '',
+            storageuser: '',
+            user: '',
+            dropprofil: false,
+            table: []
+        },
+        mounted() {
+            this.sessiosuser = JSON.parse(localStorage.getItem('user'));
+            this.storageuser = JSON.parse(sessionStorage.getItem('user'));
+            if( this.sessiosuser.id != this.storageuser.id || this.sessiosuser.id == '' || this.storageuser.id == '' ) {
+                window.location.href = 'index.html';
+            }else{
+                this.user = this.sessiosuser
+            }
+        },
+        methods: {
+            dropProfil: function() {
+                this.dropprofil = !this.dropprofil
+            },
+            logout: function() {
+                window.location.href = 'index.html'; 
+                localStorage.removeItem('user')
+                sessionStorage.removeItem('user')
+                this.sessiosuser = ''                    
+                this.storageuser = ''    
+                this.user = ''                  
+            },
+            initVal: function(){
+                document.querySelector('#type').value = ''
+                document.querySelector('#amount').value = ''
+                document.querySelector('#details').value = ''
+                document.querySelector('#other').value = ''
+            },
+            insert: function(event) {
+                event.preventDefault()   
+                let a = document.querySelector('#type').value  
+                let b = document.querySelector('#amount').value
+                if(a!=''&&b!='') {
+                    let trans = new Transaction()
+                    let date = new Date()
+                    switch (this.table.length) {
+                        case 6:
+                            trans.type = document.querySelector('#type').value
+                            trans.amount = document.querySelector('#amount').value
+                            trans.details = document.querySelector('#details').value
+                            trans.other = document.querySelector('#other').value
+                            trans.date = date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear() +' '+date.getHours() +':'+ date.getMinutes()
+                            this.table.push(trans)
+                            $.notify("tow remaining record", "warning");
+                            $.notify("Well inserted", "success");
+                            this.initVal()                            
+                            break;
+                        case 7:
+                            trans.type = document.querySelector('#type').value
+                            trans.amount = document.querySelector('#amount').value
+                            trans.details = document.querySelector('#details').value
+                            trans.other = document.querySelector('#other').value
+                            trans.date = date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear() +' '+date.getHours() +':'+ date.getMinutes()
+                            this.table.push(trans)
+                            $.notify("one remaining record", "warning");
+                            $.notify("Well inserted", "success");
+                            this.initVal()
+                            break;
+                        case 8:
+                            $.notify("no more record allowed", "error");
+                            this.initVal()
+                            break;
+                        default:
+                            trans.type = document.querySelector('#type').value
+                            trans.amount = document.querySelector('#amount').value
+                            trans.details = document.querySelector('#details').value
+                            trans.other = document.querySelector('#other').value
+                            trans.date = date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear() +' '+date.getHours() +':'+ date.getMinutes()
+                            this.table.push(trans)
+                            $.notify("Well inserted", "success");
+                            this.initVal()
+                            break;
+                    }
+                }else{
+                    $.notify("Type and amount are required", "error");
+                }
+            }
+        }
+    })
+</script>
+</html>

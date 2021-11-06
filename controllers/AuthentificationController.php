@@ -6,8 +6,7 @@
 
         private $pdo;
 
-        function __construct()
-        {
+        function __construct(){
             $db = new Db();
             $this->pdo = $db->getPdo();
         }
@@ -43,11 +42,10 @@
             ]);
             $res = $req->fetch(PDO::FETCH_OBJ);
             $req->closeCursor();
-            if(!empty($res)){
-                $data = json_encode($res);
-                header('location: ../../dashboard.php?d='.$data.'');
+            if(!empty($res)){                
+                echo json_encode($res);
             }else{
-                header('location: ../../index.php');
+                echo json_encode("error");
             }
             //aller verifier si l'utilisateur est present dans la base de donnees
             //si oui retourner le dashbord de l'utilisateur loge

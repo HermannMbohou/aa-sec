@@ -1,0 +1,116 @@
+#custum-dashboard {
+    background-color: darkgrey;
+    font-size: 12px;
+    color: rgb(255, 251, 245);
+    margin: auto;
+}
+
+#links > div > a {
+    color: rgb(255, 251, 245);
+    text-decoration: none;
+}
+
+#links > div > a:hover {
+    color: rgb(255, 251, 245);
+}
+
+section {
+    height: 75vh;
+    background-color: rgb(192, 192, 192);
+}
+
+header {
+    height: 15vh;
+    background-color: rgb(168, 164, 164);
+    display: flex;
+    flex-direction: row;
+}
+
+#photo-profil-header {
+    border-radius: 40px;
+    background-image: url("assets/images/ico.jpg");
+    background-position: center;
+    width: 8vh;
+    height: 8vh;
+}
+
+#logo-header > span {
+    font-size: 7rem;
+}
+
+footer {
+    background-color: rgb(65, 85, 85);
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    height: 10vh;
+}
+
+#Dev-pick {
+    background-image: url("assets/images/ico.jpg");
+    background-position: center;
+    border-radius: 35px;
+    width: 6vh;
+    height: 6vh;
+}
+
+#infos-user-header {
+    border: 2px solid rgb(65, 85, 85);
+    border-radius: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#infos-user-header > a {
+    color: rgb(255, 251, 245);
+}
+
+#infos-user-header:hover {
+    background-color: rgb(129, 125, 125);
+    color: rgb(250, 247, 243);
+}
+
+#pul {
+    border: 2px solid rgb(65, 85, 85);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+#ibtn {
+    z-index: 0;
+}
+
+#pul > a {
+    background-color: rgb(168, 164, 164);
+    color: rgb(255, 251, 245);
+}
+
+#pul > a:hover {
+    background-color: rgb(129, 125, 125);
+    color: rgb(250, 247, 243);
+}
+
+#a1 {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#a3 {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#small-size {
+    display: none;
+}
+
+@media screen and (max-width: 985px) {
+
+    #custum-dashboard {
+        display: none;
+    }
+
+    #small-size {
+        display: block;
+    }
+}

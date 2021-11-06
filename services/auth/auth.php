@@ -22,6 +22,6 @@
     }
     if(!empty($_GET))
     {
-        header('location: /../../../index.php');
+        header('location: /../../../index.html');
     }
 ?>
